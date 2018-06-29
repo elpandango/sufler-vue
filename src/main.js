@@ -5,6 +5,16 @@ import App from './App.vue';
 
 import axios from 'axios'
 
+// axios.interceptors.push((request, next) => {
+//   console.log(request);
+//   if (request.method == 'POST') {
+//     request.method = 'PUT';
+//   }
+//   next(response => {
+//     response.json = () => { return {messages: response.body} }
+//   });
+// });
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({

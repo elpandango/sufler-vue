@@ -20,7 +20,16 @@
         style: 'animation: text-slide ' + this.speed + 's'
       }
     },
-    props: ['text', 'speed']
+    props: ['text', 'speed'],
+    created() {
+      axios.get('https://sufler-vue.firebaseio.com/data.json')
+        .then(response => {
+          console.log(response)
+        })
+        .then(data => {
+
+        })
+    }
   }
 </script>
 
