@@ -1,0 +1,10 @@
+{
+  "name": "sufler-vue",
+  "version": "1.0.0",
+  "description": "Heroku Vuejs app",
+  "author": "elpandango",
+  "private": true,
+  "scripts": {
+    "postinstall": "npm install express"
+  }
+}
