@@ -5,15 +5,19 @@ import App from './App.vue';
 
 import axios from 'axios'
 
-// axios.interceptors.push((request, next) => {
-//   console.log(request);
-//   if (request.method == 'POST') {
-//     request.method = 'PUT';
-//   }
-//   next(response => {
-//     response.json = () => { return {messages: response.body} }
-//   });
-// });
+const reqInterceptor = axios.interceptors.request.use(config => {
+  // console.log('Request Interceptor', config);
+  if (config.method === 'post') {
+    config.method = 'PUT';
+  }
+  return config
+});
+const resInterceptor = axios.interceptors.response.use(res => {
+  // console.log('Response Interceptor', res)
+  return res
+});
+// axios.interceptors.request.eject(reqInterceptor);
+// axios.interceptors.response.eject(resInterceptor);
 
 Vue.use(VueRouter);
 

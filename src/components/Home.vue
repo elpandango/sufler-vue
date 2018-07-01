@@ -73,15 +73,14 @@
     data() {
       return {
         textPost: {
-          speed: 0,
+          speed: '',
           text: ''
         }
       }
     },
     methods: {
       suflerSubmit() {
-        alert(123);
-        axios.post('https://sufler-vue.firebaseio.com/data.json', this.textPost)
+        axios.post('https://vuejs-http-a3463.firebaseio.com/data.json', this.textPost)
           .then(response => {
             console.log(response);
           })
@@ -89,6 +88,8 @@
     }
   }
 </script>
+
+
 <style scoped>
   html, body {
     background-color: #fff;

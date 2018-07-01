@@ -17,18 +17,18 @@
       return {
         list: [],
         paused: false,
-        style: 'animation: text-slide ' + this.speed + 's'
+        speed: '',
+        text: '',
+        style: ''
       }
     },
-    props: ['text', 'speed'],
     created() {
-      axios.get('https://sufler-vue.firebaseio.com/data.json')
+      axios.get('https://vuejs-http-a3463.firebaseio.com/data.json')
         .then(response => {
-          console.log(response)
-        })
-        .then(data => {
-
-        })
+          this.speed = response.data.speed;
+          this.style = 'animation: text-slide ' + this.speed + 's';
+          this.text = response.data.text;
+        });
     }
   }
 </script>
