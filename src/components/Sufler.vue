@@ -293,6 +293,7 @@
   .sliding-text {
     /*Настройки*/
     font-size: 70px;
+    animation-timing-function: linear;
     /*-webkit-animation: text-slide 450s;*/
     /*animation: text-slide 450s;*/
   }
