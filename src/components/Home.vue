@@ -26,11 +26,7 @@
     </nav>
     <div class="flex-center position-ref">
       <div class="content">
-        <h1 class="m-b-md">
-          <!--Главная страница суфлера.-->
-        </h1>
-
-        <div class="container">
+         <div class="container">
           <div class="row">
             <div class="col-xs-12">
               <form action="" method="post">
@@ -125,7 +121,9 @@
   .full-height {
     height: 100vh;
   }
-
+  .content {
+    width: 100%;
+  }
   .flex-center {
     align-items: center;
     display: flex;
