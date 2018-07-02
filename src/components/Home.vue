@@ -52,11 +52,24 @@
                          id="speed"
                          required>
                 </div>
-                <button
-                  @click.prevent="suflerSubmit"
-                  type="submit"
-                  class="btn btn-success">Сохранить
-                </button>
+                <div v-show="textPost.error==='false'" class="alert alert-success text-left">
+                  Всё прошло успешно!<br>
+                  Текст сохранён на сервере.
+                </div>
+                <div v-show="textPost.error==='true'" class="alert alert-danger text-left">
+                  Произошла ошибка!<br>
+                  Текст не удалось сохранить.
+                </div>
+                <div v-show="textPost.error==='empty'" class="alert alert-danger text-left">
+                  Поля не должны быть пустыми!
+                </div>
+                <div class="form-group text-left">
+                  <button
+                    @click.prevent="suflerSubmit"
+                    type="submit"
+                    class="btn btn-success">Сохранить
+                  </button>
+                </div>
               </form>
             </div>
           </div>
@@ -74,16 +87,25 @@
       return {
         textPost: {
           speed: '',
-          text: ''
+          text: '',
+          error: null
         }
       }
     },
     methods: {
       suflerSubmit() {
-        axios.post('https://vuejs-http-a3463.firebaseio.com/data.json', this.textPost)
-          .then(response => {
-            console.log(response);
-          })
+        if (this.textPost.speed !== '' && this.textPost.text !== '') {
+          axios.post('https://vuejs-http-a3463.firebaseio.com/data.json', this.textPost)
+            .then(response => {
+              this.textPost.error = 'false';
+//            console.log(response);
+            })
+            .catch(error => {
+              this.textPost.error = 'true';
+            })
+        } else {
+          this.textPost.error = 'empty';
+        }
       }
     }
   }
