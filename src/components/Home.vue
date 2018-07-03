@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
@@ -14,11 +14,11 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
 
-            <router-link tag="li" to="/">
-              <a>Home</a>
+            <router-link tag="li" to="/" class="active">
+              <a>Главная</a>
             </router-link>
             <router-link tag="li" to="/sufler">
-              <a>Sufler</a>
+              <a>Суфлер</a>
             </router-link>
           </ul>
         </div>
