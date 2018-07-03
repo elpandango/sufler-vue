@@ -26,7 +26,7 @@
     </nav>
     <div class="flex-center position-ref">
       <div class="content">
-         <div class="container">
+        <div class="container">
           <div class="row">
             <div class="col-xs-12">
               <form action="" method="post">
@@ -59,11 +59,16 @@
                 <div v-show="textPost.error==='empty'" class="alert alert-danger text-left">
                   Поля не должны быть пустыми!
                 </div>
-                <div class="form-group text-left">
+                <div class="form-group">
                   <button
                     @click.prevent="suflerSubmit"
                     type="submit"
-                    class="btn btn-success">Сохранить
+                    class="btn btn-success pull-left">Сохранить
+                  </button>
+
+                  <button @click="fetchData"
+                          type="button"
+                          class="btn btn-primary pull-right">Загрузить с базы
                   </button>
                 </div>
               </form>
@@ -102,6 +107,13 @@
         } else {
           this.textPost.error = 'empty';
         }
+      },
+      fetchData() {
+        axios.get('https://vuejs-http-a3463.firebaseio.com/data.json')
+          .then(response => {
+            this.textPost.speed = response.data.speed;
+            this.textPost.text = response.data.text;
+          })
       }
     }
   }
@@ -121,9 +133,11 @@
   .full-height {
     height: 100vh;
   }
+
   .content {
     width: 100%;
   }
+
   .flex-center {
     align-items: center;
     display: flex;
